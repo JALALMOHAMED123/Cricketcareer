@@ -13,7 +13,7 @@ const Career = sequelize.define('Career', {
     allowNull: false
   },
   dob: {
-    type: DataTypes.STRING,
+    type: DataTypes.DATE,
     allowNull: false
   },
   url: {

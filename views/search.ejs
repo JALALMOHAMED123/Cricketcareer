@@ -1,0 +1,55 @@
+<% if (search) { %>
+    <% if (career) { %>
+        <a href="/careers/edit/<%= career.id %>?edit=true" style="margin-left: 88%;" class="btn btn-danger">Edit Player</a><br><br>
+        <section id="resultsSection">
+            <table class="layout-table">
+                <tr>
+                    <td class="left-column">
+                        <table style="width: 100%">
+                            <tr>
+                                <td><img src="<%= career.url %>" alt="Player Image"></td>
+                                <td><h1><%= career.name %></h1></td>
+                            </tr>
+                            <tr><td><br></td></tr>
+                            <tr>
+                                <td><%= career.birth_place %></td>
+                                <td><%= career.m_dob %></td>
+                            </tr>
+                            <tr><td><br></td></tr>
+                            <tr><td><h5><b>Personal Information</b></h5></td></tr>
+                            <tr><td><br></td></tr>
+                            <tr><td><label>No of Matches: </label></td>
+                                <td><%= career.no_matches %></td>
+                            </tr>
+                            <tr><td><label>Runs: </label></td>
+                                <td><%= career.score %></td>
+                            </tr>
+                            <tr><td><label>No of Fifties: </label></td>
+                                <td><%= career.fifties %></td>
+                            </tr>
+                            <tr><td><label>No of Centuries: </label></td>
+                                <td><%= career.centuries %></td>
+                            </tr>
+                            <tr><td><label>Wickets: </label></td>
+                                <td><%= career.wickets %></td>
+                            </tr>
+                            <tr><td><label>Average: </label></td>
+                                <td><%= career.average %></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="right-column">
+                        <%= career.career_path %><br>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    <% } else { %>
+        <h3>No Player found</h3>
+    <% } %>
+<% } %>
+
+<script>
+    document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('<% if (editing) { %>editSection<% } %>').scrollIntoView({ behavior: 'smooth' });
+</script>

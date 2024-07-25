@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    margin-top: 100px;
+    margin-top: 10px;
+    background-color: #eef2f3e0;
 }
 
 .title {
@@ -9,33 +10,54 @@ body {
 }
 
 .form {
-    margin-left: 200px;
-    margin-right: 350px;
+    margin-left: 500px;
+    margin-right: 400px;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #f0f0f0;
     border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input{
+    border-radius: 10px;
+}
+form label, form select, form input {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+label{
+    font-weight: bold;
+}
+#search{
+    margin-left: 73%;
+}
+
+/* table */
+.layout-table {
+    margin-left: 100px;
+    width: 90%;
+    height: 80%;
+    background-color: #ffffff;
+    border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form label, form select, form input {
-    margin-bottom: 10px;
+.left-column, .right-column {
+    padding: 20px;
+    vertical-align: top;
 }
 
-#submit {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+.left-column {
+    width: 40%;
+    background-color: #e0e0e0;
 }
 
-#submit:hover {
-    background-color: #0056b3;
+.right-column {
+    width: 60%;
+    background-color: #ffffff;
+    text-align: left;
 }
 
-.container {
-    height: 100%;
-}

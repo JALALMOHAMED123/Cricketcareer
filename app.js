@@ -12,14 +12,12 @@ app.set('views', 'views');
 
 // app.use(expressLayouts);
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res)=>{
-    res.render('index');
-})
-// app.use(careerRoutes);
+app.use(careerRoutes);
 
 sequelize
     .sync()

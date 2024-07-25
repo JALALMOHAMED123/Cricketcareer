@@ -4,50 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cricket Career</title>
-    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div class="container">
-    <form action="/createCareer" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="dob">Date Of Birth:</label>
-        <input type="date" id="dob" name="dob" required><br>
-
-        <label for="birth">Birth place:</label>
-        <input type="text" id="birth" name="birth" required><br>
-
-        <label for="career">Career:</label>
-        <textarea type="text area" id="career" name="career" required></textarea><br>
-
-        <label for="no_matches">No of Matches:</label>
-        <input type="text" id="no_matches" name="no_matches" required><br>
-
-        <label for="score">Score:</label>
-        <input type="text" id="score" name="score" required><br>
-
-        <label for="fifties">Fifties:</label>
-        <input type="number" id="fifties" name="fifties" required><br>
-
-        <label for="centuries">Centuries:</label>
-        <input type="number" id="centuries" name="centuries" required><br>
-
-        <label for="wickets">Wickets:</label>
-        <input type="number" id="wickets" name="wickets" required><br>
-
-        <label for="average">Average:</label>
-        <input type="float" id="average" name="average" required><br>
-
-        <button type="submit">Submit</button>
-    </form>
-</div>  
-<div class="search">
-        <input type="text" placeholder="Search here">
-        <form action="/careers" method="POST">
-            <button type="submit">Search</button>
+    <section id="editSection">
+    <form class="form" action="/<%if(editing){%>careers/edit<%} else {%>create<%} %>" method="POST">
+        <h2 class="title">Player Information</h2><br>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="<% if(editing) { %><%=career.name%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date Of Birth:</label>
+            <input type="date" class="form-control" id="dob" name="dob" value="<% if(editing) { %><%=career.dob%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="Url">Image Url:</label>
+            <input type="text" class="form-control" id="Url" name="url" value="<% if(editing) { %><%=career.url%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="birth">Birth place:</label>
+            <input type="text" class="form-control" id="birth" name="birth_place" value="<% if(editing) { %><%=career.birth_place%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="career">Career:</label>
+            <textarea type="textarea" class="form-control" id="career" name="career_path" required>
+                <% if(editing) { %><%=career.career_path%><% } %>
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label for="no_matches">No of Matches:</label>
+            <input type="number" class="form-control" id="no_matches" name="no_matches" value="<% if(editing) { %><%=career.no_matches%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="score">Score:</label>
+            <input type="number" class="form-control" id="score" name="score" value="<% if(editing) { %><%=career.score%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="fifties">Fifties:</label>
+            <input type="number" class="form-control" id="fifties" name="fifties" value="<% if(editing) { %><%=career.fifties%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="centuries">Centuries:</label>
+            <input type="number" class="form-control" id="centuries" name="centuries" value="<% if(editing) { %><%=career.centuries%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="wickets">Wickets:</label>
+            <input type="number" class="form-control" id="wickets" name="wickets" value="<% if(editing) { %><%=career.wickets%><% } %>" required>
+        </div>
+        <div class="form-group">
+            <label for="average">Average:</label>
+            <input type="float" class="form-control" id="average" name="average" value="<% if(editing) { %><%=career.average%><% } %>" required>
+        </div>
+        <% if (editing) { %>
             <input type="hidden" value="<%=career.id%>" name="careerId">
-        </form>
-</div>
+        <% } %>
+        <center><button type="submit" class="btn btn-success"><%if(editing) {%>Update<%} else{%>Submit<%}%></button></center>
+      </form>
+    </section>
+      <br><br>
+    <form class="form-row" id="search" action="/search" method="POST">
+        <div class="col-auto"><input type="text" class="form-control" placeholder="Search here" name="name" required></div>
+        <div class="col-auto"><button type="submit" class="btn btn-primary" >Search</button></div>
+    </form>
+    
+    <br><br>
+
+<%-include('search.ejs')%>
+
 </body>
 </html>
